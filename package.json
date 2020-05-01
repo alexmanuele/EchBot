@@ -1,0 +1,12 @@
+{
+  "name": "EchBot",
+  "version": "0.0.1",
+  "description": "ech",
+  "main": "bot.js",
+  "author": "ajoeman",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "discord.js": "^11.5.1",
+    "winston": "^3.2.1"
+  }
+}

@@ -1,11 +1,30 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const schedule = require('node-schedule');
 const auth = require('./auth.json');
+
+var updateChannel = null;
 var nightcore = false;
 client.on('ready', () => {
 	console.log(`logged in as ${client.user.tag}`);
+	updateChannel = client.channels.find(channel => channel.name === "daily_updates");
+	
+	
 });
 
+
+// Schedule lab member ping on weekdays at 2:57 pm.
+var rule = new schedule.RecurrenceRule();
+rule.dayOfWeek = [new schedule.Range(1,5)];
+rule.hour = 14;
+rule.minute = 57;
+
+
+var j = schedule.scheduleJob(rule, function(){
+	updateChannel.send("<@&628305607430111242> Daily updates soon <:cato:608278702677295114>" );
+});
+
+//server stuff
 client.on('message', msg => {
 	
 	if(msg.content === 'ech'){
